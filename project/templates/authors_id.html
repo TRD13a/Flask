@@ -1,0 +1,40 @@
+<!-- Шаблон для добавления и отображения списка авторов -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p>{% if current_user.is_authenticated %}
+        <a href="/logout">Выйти из: {{ current_user.username }}</a>
+{% endif %}</p>
+<form action="{{b}}" method="post">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.title.label(class='form_input_label') }}
+            {{ form.title(class='form_input') }}
+        </div>
+        <div>
+            <p>{{ form.text.label(class='form_input_label') }}</p>
+            <p>{{ form.text(cols="40", rows="10") }}</p>
+        </div>
+
+        {{ form.submit(value='Опубликовать') }}
+</form>
+
+
+
+    {% for post in posts %}
+         <li>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.text }}</p>
+        </li>
+
+
+
+{% endfor %}
+</body>
+</html>
