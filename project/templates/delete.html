@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление!</title>
+</head>
+<body>
+<form action="{{b}}" method="post">
+    {{ form.hidden_tag() }}
+    {% for p in post %}
+        <h1>Удалить пост: "{{p.title}}"</h1>
+    {{ form.submit(value='Удалить!') }}
+    <a href="{{ url_for('get_authors_id', authors_id=p.author) }}">Отменить</a>
+    {% endfor %}
+</form>
+</body>
+</html>

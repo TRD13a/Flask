@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{{b}}" method="post">
+        {{ form.hidden_tag() }}
+    {% for author in authors %}
+        <div>
+            <li>{{ form.username.label(class='form_input_label') }}</li>
+            <li> {{ form.username(class='form_input', value=author.username) }}</li>
+            <li>{{ form.password.label(class='form_input_label') }}</li>
+            <li>{{ form.password(class='form_input', value=author.password) }}</li>
+        </div>
+        <p>{{ form.submit(value='Изменить учетные данные') }}</p>
+    {%endfor%}
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- Шаблон для добавления и отображения списка авторов -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p>{% if current_user.is_authenticated %}
+        <a href="/logout">Выйти из: {{ current_user.username }}</a>
+{% endif %}</p>
+<form action="{{b}}" method="post">
+        {{ form.hidden_tag() }}
+    {% for p in post %}
+        <div>
+            {{ form.title.label(class='form_input_label') }}
+            {{ form.title(class='form_input', value=p.title) }}
+        </div>
+        <div>
+            <p>{{ form.text.label(class='form_input_label') }}</p>
+            <p>{{ form.text(rows="10", cols="40", placeholder=p.text)}}</p>
+<!--            <p>{{ form.text(rows="10", cols="40", placeholder=p.text) }}</p>-->
+
+       </div>
+        {{ form.submit(value='Внести изменения') }}
+        <a href="{{ url_for('get_authors_id', authors_id=p.author) }}">Отменить</a>
+    {% endfor %}
+
+
+
+</form>
+<p></p>
+
+
+</body>
+</html>

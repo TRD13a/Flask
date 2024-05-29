@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{{b}}" method="post">
+        {{ form.hidden_tag() }}
+        <h3>Внимание!</h3>
+        <p>Если удалить пользователя также будут удалены его статьи</p>
+        <p>{{ form.submit(value='Удалить') }}
+            <a href="{{ url_for('admin') }}">Отменить</a>
+        </p>
+</form>
+</body>
+</html>
